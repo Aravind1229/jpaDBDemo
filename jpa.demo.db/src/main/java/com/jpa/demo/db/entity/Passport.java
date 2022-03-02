@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Passport {
@@ -12,6 +13,8 @@ public class Passport {
 private Long id;
 @Column(nullable=false)
 private String number;
+@OneToOne(mappedBy="passport")
+private Student student;
 public Passport() {
 	
 }
@@ -23,6 +26,12 @@ public String getNumber() {
 }
 public void setNumber(String number) {
 	this.number = number;
+}
+public Student getStudent() {
+	return student;
+}
+public void setStudent(Student student) {
+	this.student = student;
 }
 public Long getId() {
 	return id;
